@@ -20,8 +20,7 @@ def check_price():
     if (converted_price < 35):
         send_mail()
     print(converted_price)
-    if (converted_price > 35):
-        send_mail()
+
 
 def send_mail():
     server = smtplib.SMTP('smtp.gmail.com', 587)
