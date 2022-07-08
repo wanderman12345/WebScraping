@@ -7,6 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 import time
 import sys
+from email.message import EmailMessage
+
 
 #Returns the price of an item
 
@@ -23,7 +25,8 @@ def searchItem(item):
         searchCraig = driverCraig.find_element(By.ID, "query")
         searchCraig.send_keys(item)
         searchCraig.send_keys(Keys.RETURN)
-        time.sleep(5)
+        time.sleep(10)
+
         search = driver.find_element(By.ID, "gh-search-input" )
         search.send_keys(item)
         search.send_keys(Keys.RETURN)
@@ -62,6 +65,10 @@ def parsePrice(Price):
             price += eachChar
     return int(price)
 
+
+# Obtained from Dev Ed tutorial
+def sendEmail():
+    
 
 
 #Main
