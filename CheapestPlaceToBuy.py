@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 import time
 import sys
-from email.message import EmailMessage
+import smtplib
 
 
 #Returns the price of an item
@@ -25,8 +25,7 @@ def searchItem(item):
         searchCraig = driverCraig.find_element(By.ID, "query")
         searchCraig.send_keys(item)
         searchCraig.send_keys(Keys.RETURN)
-        time.sleep(10)
-
+        time.sleep(5)
         search = driver.find_element(By.ID, "gh-search-input" )
         search.send_keys(item)
         search.send_keys(Keys.RETURN)
@@ -65,18 +64,33 @@ def parsePrice(Price):
             price += eachChar
     return int(price)
 
+# Code from Dev Ed YT for sending Email
+def sendEmail(URL):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+    server.login('mathew2002raj@gmail.com', 'authenticationPassword')
 
-# Obtained from Dev Ed tutorial
-def sendEmail():
-    
+    subject = 'CheapestPrice!'
+    body = f'check the Following Link: {URL}'
+    msg = f"Subject: {subject}\n\n{body}"
+    server.sendmail(
+        'mathew2002raj@gmail.com',
+        'mathew2002raj@gmail.com',
+        msg
+    )
+    print('Hey Email has been successfully sent')
+    server.quit()
+    return
 
 
 #Main
 
-CheapestPrice, CheapestURL = searchItem("ps4 console")
+CheapestPrice, CheapestURL = searchItem("Iphone 11")
 print(CheapestPrice)
 print(CheapestURL)
-
+sendEmail(CheapestURL)
 
 
 
