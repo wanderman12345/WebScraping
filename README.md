@@ -1,7 +1,12 @@
-# WebScraping
+# Price Comparison Software
 
-##
-Working on my own scraper to check the price of items I would like to purchase.
-Thanks to @ Dev Ed I was able to make my own priceTracker by using the BeautifulSoup Framework
+Utilized Selenium and Python to create a script that automates the comparison of prices for the same item. Queries Craigslist and BestBuy for cheapest price. Sends item's URL via email to purchase
 
-![CODE](/carbon.png)
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install selenium
+
+
+## Usage
+
+/Users/mathewraju/Downloads/carbon.png
